@@ -30,7 +30,6 @@ Workflow:
           External: true
       - $.environment.securityGroupManager.addGroupIngress($securityGroupIngress)
       - $.instance.deploy()
-      - $.environment.reporter.report($this, 'HDP Sandbox is installed')
+      - $msg: 'HDP Sandbox is installed and running at http://'
       - $ep: $.instance.floatingIpAddress + ':8888'
-      - $msg: 'HDP Sandbox running at http://'
       - $.environment.reporter.report($this, $msg + $ep)
